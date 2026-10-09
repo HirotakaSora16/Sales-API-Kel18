@@ -1,0 +1,20 @@
+import express from "express";
+import dotenv from "dotenv";
+import categoryRoutes from "./routes/categoryRoutes.js";
+import customerRoutes from "./routes/customerRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
+
+dotenv.config();
+const app = express();
+
+app.use(express.json());
+
+// Endpoint Routes API
+app.use("/api/categories", categoryRoutes);
+app.use("/api/customers", customerRoutes);
+app.use("/api/products", productRoutes);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
